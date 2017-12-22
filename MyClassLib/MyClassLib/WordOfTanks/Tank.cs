@@ -19,6 +19,7 @@ namespace MyClassLib.WordOfTanks
 2.	Уровня боекомплекта танка.
 3.	Уровня брони. 
 4.	Уровня маневренности.*/
+        public string model;
        public string name;
         private int ammunation;
         private int armor;
@@ -32,9 +33,10 @@ namespace MyClassLib.WordOfTanks
 
        static Random rnd = new Random();
         
-        public Tank(string name)
+        public Tank(string model,string name)
         {
             Thread.Sleep(100);
+            this.model = model;
             this.name = name;
           ammunation=rnd.Next(100);
            armor = rnd.Next(100);
@@ -56,7 +58,7 @@ namespace MyClassLib.WordOfTanks
         {
             int count1 = 0;
             int count2 = 0;
-            Tank obj3=new Tank(" ");
+            Tank obj3=new Tank(" "," ");
             if (obj1.ammunation > obj2.ammunation)
             {
                 count1++; }
@@ -73,7 +75,8 @@ namespace MyClassLib.WordOfTanks
             else { count2++; }
 
 
-            if (count1 > count2) { 
+            if (count1 > count2) {
+                obj3.model = obj1.model; 
                 obj3.name = obj1.name;
                 obj3.ammunation = obj1.ammunation;
                 obj3.armor = obj1.armor;
@@ -82,6 +85,7 @@ namespace MyClassLib.WordOfTanks
             }
             else
             {
+                obj3.model = obj2.model;
                 obj3.name = obj2.name;
                 obj3.ammunation = obj2.ammunation;
                 obj3.armor = obj2.armor;
@@ -99,7 +103,7 @@ namespace MyClassLib.WordOfTanks
 */
         public string Show()
         {
-            return name+"\tБоекомплект = "+ammunation+"\n\t\tУровень брони = "+armor+"\n\t\tУровень маневренности = "+maneuver;
+            return model+" : "+name+"\tБоекомплект = "+ammunation+"\n\t\tУровень брони = "+armor+"\n\t\tУровень маневренности = "+maneuver;
         }
 
         /*
